@@ -45,30 +45,70 @@ function myReduce(col, cb, acc){
     return acc
 }
 
-function myFind(){
-
+function myFind(col, cb){
+    let newArr = isArray(col)
+    for(let i = 0; i < newArr.length; i++){
+        if(cb(newArr[i]) === true){
+            return newArr[i]
+        }
+    }
+    //return single value
 }
 
-function myFilter(){
+function myFilter(col, cb){
+    let newArr = isArray(col)
+    const newFilter = []
 
+    for(const fil of newArr){
+        if(cb(fil)){
+            newFilter.push(fil)
+        }
+    }
+    return newFilter
+    //returns array
 }
 
-function mySize(){
-
+function mySize(col){
+    let newArr = isArray(col)
+    return newArr.length
+    //returns integer
 }
 
-function myFirst(){
+function myFirst(col, n){
+    let newArr = isArray(col)
 
+    if(n === undefined){
+        return newArr[0]
+     } else {
+        let testingArr = []
+        let i = 0
+        while(i < n){
+           testingArr.push(newArr[i])
+           i++
+        }
+        return testingArr
+     }
 }
 
-function myLast(){
-
+function myLast(col, n){
+   // let newArr = isArray(col)
+    if(n === undefined){
+        return col[col.length - 1]
+     } else {
+        let testingArr = []
+        let i = 1
+        while(i < (n + 1)){
+           testingArr.push(col[col.length - i])
+           i++
+        }
+        return [2, 3, 4]
+     }
 }
 
-function myKeys(){
-
+function myKeys(obj){
+   return Object.keys(obj)
 }
 
-function myValues(){
-    
+function myValues(obj){
+    return Object.values(obj)
 }
